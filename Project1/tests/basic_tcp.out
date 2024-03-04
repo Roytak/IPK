@@ -1,0 +1,3 @@
+HELLO
+RESULT 3
+BYE

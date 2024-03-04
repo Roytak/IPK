@@ -1,0 +1,21 @@
+#!/nix/store/jav635gwf6dm48xm6bki4w9y1j89sxwm-expect-5.45.4/bin/expect -f
+
+set timeout 1
+
+spawn /home/ipk/IPK_Project1/build/ipkcpc -h 0.0.0.0 -p 2023 -m TCP
+
+send -- "HELLO\n"
+
+expect {
+    -re {^Received message: HELLO\n$} {}
+    timeout {exit 1}
+}
+
+send -- "BYE\n"
+
+expect {
+    -re {^"Received message: BYE\n"$} {}
+    timeout {exit 1}
+}
+
+exit 0
